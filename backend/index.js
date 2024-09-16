@@ -30,6 +30,19 @@ app.post("/blog_post_event", async (req, res) => {
 
 })
 
+app.post("/archive_posts", async (req, res) => {
+    const sequelize = new Sequelize(POSTGRES_CONNECTION_STRING, {});
+    const { age_in_second } = req.body.input;
+
+    const [results, metadata] = await sequelize.query(
+        `UPDATE blog_post SET is_published = false WHERE date < now() - INTERVAL '${age_in_second} second'`
+    );
+
+    res.status(200).json({
+        count: metadata.rowCount
+    });
+});
+
 app.listen(8000, () => {
     console.log("SERVER IS LISTENING PORT 8000");
 });
