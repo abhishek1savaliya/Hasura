@@ -1,0 +1,13 @@
+table:
+  name: blog_post_activity
+  schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - blog_post_id
+        - id
+        - type
+        - date
+      filter: {}
+    comment: ""
