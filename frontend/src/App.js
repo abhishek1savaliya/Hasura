@@ -7,18 +7,21 @@ import { CreateBlogPost } from "./CreateBlogPost";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <AuthStatus />
-      </header>
-      <main style={{ margin: "16px" }}>
-        <h1>My Blog</h1>
-        <BlogPosts />
-        <CreateBlogPost />
-      </main>
-      <footer>
-        <Token />
-      </footer>
-    </div>
+  <header className="App-header">
+    <AuthStatus />
+  </header>
+  
+  <main className="m-4">
+    <h1 className="text-2xl font-bold">My Blog</h1>
+    <BlogPosts />
+    <CreateBlogPost />
+  </main>
+  
+  <footer>
+    <Token />
+  </footer>
+</div>
+
   );
 }
 

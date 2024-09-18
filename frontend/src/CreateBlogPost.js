@@ -8,13 +8,9 @@ export const CreateBlogPost = () => {
 
     return (
         <form
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "stretch"
-            }}
-            onSubmit={ e => {
-                e.preventDefault()
+            className="flex flex-col"
+            onSubmit={e => {
+                e.preventDefault();
                 insertPost({
                     variables: {
                         title: titleInput.value,
@@ -23,40 +19,33 @@ export const CreateBlogPost = () => {
                     refetchQueries: [{
                         query: BLOG_POSTS
                     }]
-                })
-                titleInput.value = ''
-                contentInput.value = ''
+                });
+                titleInput.value = '';
+                contentInput.value = '';
             }}
         >
-            <h2>Create a new post</h2>
-            
+            <h2 className="text-xl font-semibold mb-4">Create a new post</h2>
+
             <input
-                style={{
-                    fontSize: "16px",
-                    padding: "8px",
-                    marginBottom: "8px"
-                }}
+                className="text-base p-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="text"
                 placeholder="Enter your title"
-                ref={i => titleInput = i}
-            ></input>
+                ref={i => (titleInput = i)}
+            />
 
             <textarea
-                style={{
-                    fontFamily: "sans-serif",
-                    padding: "8px",
-                    marginBottom: "8px"
-                }}
+                className="font-sans p-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Write your post here..."
-                ref={i => contentInput = i}
+                ref={i => (contentInput = i)}
             ></textarea>
-        
+
             <button
-                style={{
-                    height: "32px"
-                }}
+                className="h-8 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                 type="submit"
-            >Submit</button>
+            >
+                Submit
+            </button>
         </form>
+
     )
 }
